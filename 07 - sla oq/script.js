@@ -13,3 +13,12 @@ const bands = [
   "Anywhere But Here",
   "An Old Dog",
 ];
+
+function standardize(bandName) {
+  return bandName.replace(/^(a |the |oh, |an )/i, "").trim();
+}
+
+const sortedBands = bands.sort((a, b) => (standardize(a) > standardize(b) ? 1 : -1));
+
+const bandsHtml = document.querySelector("#bands");
+bandsHtml.innerHTML = bands.map((band) => `<li>${band}</li>`).join("");
